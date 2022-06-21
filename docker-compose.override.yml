@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  deltatre.service.wordapi:
+    container_name: service-wordapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "54244:5000"
+
+  deltatre.apigateway:
+    container_name: api-gateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "54241:5100"
+    links:
+      - deltatre.service.wordapi
+    depends_on:
+      - deltatre.service.wordapi
+

@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  deltatre.service.wordapi:
+    image: ${DOCKER_REGISTRY-}deltatreservice
+    build:
+      context: .
+      dockerfile: MicroServices/DeltaTre.Service.WordApi/Dockerfile
+
+  deltatre.apigateway:
+    image: ${DOCKER_REGISTRY-}deltatregateway
+    build:
+      context: .
+      dockerfile: DeltaTre.ApiGateway/Dockerfile
